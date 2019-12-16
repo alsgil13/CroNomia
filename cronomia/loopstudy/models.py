@@ -12,6 +12,7 @@ class Ciclo(models.Model):
     descricao = models.TextField(verbose_name="Descrição")
     dt_cria = models.DateTimeField(auto_now=True)
     tamanho = models.IntegerField()
+    laps = models.IntegerField(help_text='Quantidade de vezes que o ciclo foi estudado')
 
 class TipoDisciplina(models.Model):
     nome = models.CharField(max_lenght=50, help_text='Nome do Tipo (e.g. Teórica, Prática, Treinamento Físico)')
@@ -47,4 +48,5 @@ class Sprint(models.Model):
     disc = models.ForeignKey('Disciplina', on_delete=models.CASCADE)
     ini = models.DateTimeField(verbose_name='Início')
     fim = models.DateTimeField()
+    done = models.BooleanField(default=False)
     
