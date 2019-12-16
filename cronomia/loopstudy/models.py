@@ -6,6 +6,10 @@ from django.dispatch import receiver
 # Create your models here.
 class Cor(models.Model):
     code = models.CharField(max_length=8, primary_key=True)
+    
+    def __str__(self):
+        """String para representar o objeto."""
+        return self.code
 
 class Ciclo(models.Model):
     nome = models.CharField(max_length=50, help_text='Nome do seu ciclo de estudos (e.g. Vestibular, Concurso, POSCOMP...)')
@@ -14,8 +18,18 @@ class Ciclo(models.Model):
     tamanho = models.IntegerField()
     laps = models.IntegerField(help_text='Quantidade de vezes que o ciclo foi estudado')
 
+    def __str__(self):
+        """String para representar o objeto."""
+        return self.nome
+    
+
 class TipoDisciplina(models.Model):
     nome = models.CharField(max_length=50, help_text='Nome do Tipo (e.g. Teórica, Prática, Treinamento Físico)')
+    
+    def __str__(self):
+        """String para representar o objeto."""
+        return self.nome
+
 
 class Disciplina(models.Model):
     nome = models.CharField(max_length=50, help_text='Nome da Disciplina')
@@ -24,6 +38,10 @@ class Disciplina(models.Model):
     familiaridade = models.IntegerField()
     tipo = models.ForeignKey('TipoDisciplina', on_delete=models.SET_NULL, null=True)
     tempo = models.IntegerField()
+    ativa = models.BooleanField(default=True)
+    def __str__(self):
+        """String para representar o objeto."""
+        return self.nome
 
 class Profile(models.Model):
     user = models.OneToOneField(User, related_name='profile', on_delete=models.CASCADE, primary_key=True)
@@ -49,4 +67,6 @@ class Sprint(models.Model):
     ini = models.DateTimeField(verbose_name='Início')
     fim = models.DateTimeField()
     done = models.BooleanField(default=False)
-    
+    def __str__(self):
+        """String para representar o objeto."""
+        return f'{self.usr.user.first_name} - {self.disc.nome}'    
