@@ -5,24 +5,24 @@ from django.dispatch import receiver
 
 # Create your models here.
 class Cor(models.Model):
-    code = models.CharField(max_lenght=8, primary_key=True)
+    code = models.CharField(max_length=8, primary_key=True)
 
 class Ciclo(models.Model):
-    nome = models.CharField(max_lenght=50, help_text='Nome do seu ciclo de estudos (e.g. Vestibular, Concurso, POSCOMP...)')
+    nome = models.CharField(max_length=50, help_text='Nome do seu ciclo de estudos (e.g. Vestibular, Concurso, POSCOMP...)')
     descricao = models.TextField(verbose_name="Descrição")
     dt_cria = models.DateTimeField(auto_now=True)
     tamanho = models.IntegerField()
     laps = models.IntegerField(help_text='Quantidade de vezes que o ciclo foi estudado')
 
 class TipoDisciplina(models.Model):
-    nome = models.CharField(max_lenght=50, help_text='Nome do Tipo (e.g. Teórica, Prática, Treinamento Físico)')
+    nome = models.CharField(max_length=50, help_text='Nome do Tipo (e.g. Teórica, Prática, Treinamento Físico)')
 
 class Disciplina(models.Model):
-    nome = models.CharField(max_lenght=50, help_text='Nome da Disciplina')
-    cor = models.ForeignKey('Cor', on_delete=models.SET_NULL)
+    nome = models.CharField(max_length=50, help_text='Nome da Disciplina')
+    cor = models.ForeignKey('Cor', on_delete=models.SET_NULL, null=True)
     ciclo = models.ForeignKey('Ciclo', on_delete=models.CASCADE)
     familiaridade = models.IntegerField()
-    tipo = models.ForeignKey('TipoDisciplina', on_delete=models.SET_NULL)
+    tipo = models.ForeignKey('TipoDisciplina', on_delete=models.SET_NULL, null=True)
     tempo = models.IntegerField()
 
 class Profile(models.Model):
