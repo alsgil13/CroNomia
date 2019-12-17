@@ -1,0 +1,25 @@
+{% extends "boilerplate.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center"><em>Lista de Ciclos</em></h1>
+            {% if ciclo_list %}
+              {% for ciclo in ciclo_list %}
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ ciclo.nome }}</h5>
+                        <p class="card-text">{{ ciclo.descricao }}<br>
+                        Este ciclo já foi estudado {{ ciclo.laps }} vezes</p>
+                        <a href="{{ ciclo.id }}" class="btn bg-cor-secundaria">+ Detalhes</a>
+                    </div>
+                </div>
+                <br>
+              {% endfor %}
+            {% else %}
+              <p>Não Existem Ciclos cadastrados.</p>
+            {% endif %}      
+        </div>
+    </div>
+</div>
+{% endblock %}

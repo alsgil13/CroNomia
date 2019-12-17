@@ -1,0 +1,36 @@
+{% extends "boilerplate.html" %}
+{% block content %}
+<div class="container">
+    <div class="row">
+            {% if ciclo %}
+            <div class="col-md-8 offset-md-2 container-detail bg-cor-secundaria">
+                <h2>{{ ciclo.nome }}</h2>
+                <p><strong>Descrição:</strong> {{ ciclo.descricao }}<br>
+                <strong>Tamanho:</strong> {{ ciclo.tamanho }} minutos<br>
+                <strong>Data da Criação:</strong> {{ ciclo.dt_cria }}<br>
+                <strong>Ciclos Concluídos:</strong> {{ ciclo.laps }}<br>
+                <strong>Id:</strong> {{ ciclo.id }}</p>
+                <hr>
+                <h4>Disciplinas deste Ciclo:</h4>
+                <small class="p-2"><em>Clique na disciplina para descrição completa</em></small>
+                {% for d in ciclo.disciplina_set.all %}
+                <a href="{{ d.get_absolute_url }}">
+                <div class="col container-disc" style="background-color: {{ d.cor }};">
+                    <h5>{{d.nome}}</h5>
+                    <em><p>Duração: {{ d.tempo }} minutos</em>
+                        
+                        
+                    </p>
+
+                </div>
+                </a>
+                
+                {% endfor %}
+
+            </div>
+            {% else %}
+              <h2 class="text-center">Ciclos Inexistente ou indisponível para esta conta.</h2>
+            {% endif %}      
+    </div>
+</div>
+{% endblock %}

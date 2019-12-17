@@ -21,7 +21,8 @@ from django.views.generic import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('cronomia/', include('loopstudy.urls')),
-    path('', RedirectView.as_view(url='/loopstudy/', permanent=True)),
+    path('', RedirectView.as_view(url='/cronomia/', permanent=True)),
+    
 ]
 
 

@@ -17,6 +17,7 @@ class Ciclo(models.Model):
     dt_cria = models.DateTimeField(auto_now=True)
     tamanho = models.IntegerField()
     laps = models.IntegerField(help_text='Quantidade de vezes que o ciclo foi estudado')
+    dono = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):
         """String para representar o objeto."""
