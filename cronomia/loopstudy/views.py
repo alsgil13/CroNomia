@@ -18,7 +18,22 @@ class CicloListView(generic.ListView):
 
 class CicloDetailView(generic.DetailView):
     model = Ciclo
-    
-    
 
+#Forms
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.urls import reverse_lazy
+
+class CicloCreate(CreateView):
+    model = Ciclo
+    fields = ['nome','descricao']
+    success_url = reverse_lazy('ciclo')
+
+class CicloUpdate(UpdateView):
+    model = Ciclo
+    fields = ['nome','descricao']
+    success_url = reverse_lazy('ciclo')
+
+class CicloDelete(DeleteView):
+    model = Ciclo
+    success_url = reverse_lazy('ciclo')
     #disciplinas = Disciplina.objects.filter(ciclo = Ciclo.id)

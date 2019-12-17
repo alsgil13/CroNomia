@@ -15,8 +15,8 @@ class Ciclo(models.Model):
     nome = models.CharField(max_length=50, help_text='Nome do seu ciclo de estudos (e.g. Vestibular, Concurso, POSCOMP...)')
     descricao = models.TextField(verbose_name="Descrição")
     dt_cria = models.DateTimeField(auto_now=True)
-    tamanho = models.IntegerField()
-    laps = models.IntegerField(help_text='Quantidade de vezes que o ciclo foi estudado')
+    tamanho = models.IntegerField(null=True, blank=True)
+    laps = models.IntegerField(help_text='Quantidade de vezes que o ciclo foi estudado',null=True, blank=True)
     dono = models.ForeignKey('Profile', on_delete=models.SET_NULL, null=True)
 
     def __str__(self):

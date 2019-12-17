@@ -1,0 +1,21 @@
+{% extends "boilerplate.html" %}
+{% load bootstrap %}
+{% block content %}
+<div class="container justify-content-center p-5">
+  <div class="container" style="text-align:center;">
+      <h4>Criar novo Ciclo</h4>
+  </div>
+  <div class="row justify-content-center">
+  <div class="col-12 col-md-4">
+    {{ form.non_field_errors }}
+    <form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+        {{ form|bootstrap }}
+     <input type="submit" value="Cadastrar" class='btn btn-success btn-block'>
+   </form>
+   <br>
+   <a href="../delete"><button class="btn btn-block btn-danger">Excluir Ciclo</button></a>
+</div>
+</div>    
+</div>   
+{% endblock %}

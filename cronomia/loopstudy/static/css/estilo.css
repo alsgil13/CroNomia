@@ -32,7 +32,8 @@ a:hover{
 }
 
 .bg-cor-secundaria{
-    background-color: #9C27B0;
+    /* background-color: #9C27B0; */
+    background-color: #4A148C;
     color: white;
     font-weight: 500;
 }
