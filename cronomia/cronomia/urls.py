@@ -22,6 +22,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('cronomia/', include('loopstudy.urls')),
     path('', RedirectView.as_view(url='/cronomia/', permanent=True)),
+    path('accounts/', include('django.contrib.auth.urls')),
     
 ]
 

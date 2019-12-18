@@ -1,0 +1,19 @@
+{% extends "boilerplate.html" %}
+
+{% block content %}
+
+<div class="container logout_msg">
+    <div class="row">
+        <div class="col-8 offset-2 text-center">
+
+            <h3>Este computador foi deconetado da conta CroNomia!</h3>
+            <em><p>Obrigado por usar o CroNômia. <br>
+                Volte logo para registrar seu progresso de estudos, estaremos esperando</p></em>
+            
+            <a href="{% url 'login'%}"><button class="btn bg-cor-secundaria">Conectar Novamente</button></a>
+          
+        </div>
+    </div>
+</div>
+
+  {% endblock %}

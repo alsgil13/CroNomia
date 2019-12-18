@@ -1,0 +1,72 @@
+{% extends "boilerplate.html" %}
+
+{% block content %}
+
+
+  
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Sua conta não dá acesso à esta página</p>
+    {% else %}
+      <p>Faça o Login para visualizar esta página.</p>
+    {% endif %}
+  {% endif %}
+  {% load bootstrap %}
+  <div class=" container container-login" style="text-align: center;">
+    <h4 class="texto-cor-primaria"><strong>Entrar</strong></h4>
+    <br>
+    <div class='row justify-content-center'>
+    <div class='col-md-4'>
+      <form method="POST">
+          {% csrf_token %}
+          <div class="small text-danger">
+            {% for error in form.non_field_errors %}
+                <p><em>{{error}}</em></p>
+            {% endfor %}
+            
+          </div>                
+          <div class="form-group">
+            <input type="text"
+            class="form-control"
+            name="{{ form.username.name }}"
+            id="{{ form.username.id_for_label }}"
+            {% if form.username.value != None %}value="{{ form.username.value|stringformat:'s' }}"{% endif %}
+            maxlength="{{ form.username.field.max_length }}"
+            {% if form.username.field.required %}required{% endif %}
+            placeholder="Nome de Usuário">
+            <div class="small text-danger">{{form.username.error}}</div>                                
+          </div> 
+
+          <div class="form-group">
+            <input type="password"
+            class="form-control"
+            name="{{ form.password.name }}"
+            id="{{ form.password.id_for_label }}"
+            maxlength="{{ form.password.field.max_length }}"
+            required
+            placeholder="Senha">
+            <div class="small text-danger">{{form.password.error}}</div>                
+          </div> 
+
+
+          <!-- <div class="form-group">
+                <div>{{ form.username|bootstrap }}</div>                  
+              </div> 
+
+              <div class="form-group">
+                <div>{{ form.password|bootstrap }}</div>
+              </div> -->
+              <div class="form-group">
+                  <button type="submit" class="btn btn-success btn-block">Acessar conta</button>
+              </div>
+              {# Assumes you setup the password_reset view in your URLconf #}
+              <p><a href="{% url 'password_reset' %}" class="texto-cor-secundaria">Esqueceu a Senha?</a></p>
+              
+      </form>
+    </div>
+  </div>
+  </div>
+  
+
+  
+{% endblock %}
