@@ -7,12 +7,13 @@
   <p>Bem vindo à <em>CroNômia</em> seu app de gerenciamento de ciclo de estudos.</p> -->
 
   <div class="row">
-      <div class="col">
-          <div class='logo_container'>
+      <div class="col text-center" >
+        <a href="{% url 'ciclos' %}">
+            <!-- <div class='logo_container'> -->
               {% load static %}
-              <a href="{% url 'ciclos' %}"><img src='{% static "img/LogoCroNomia.png" %}' class="image-fluid"></a>
-
-          </div>
+              <img src='{% static "img/LogoCroNomia.png" %} 'class='img-fluid' style="max-width: 65%;">
+            <!-- </div> -->
+        </a>
 
       </div>
 
